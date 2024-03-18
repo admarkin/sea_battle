@@ -13,4 +13,6 @@ add_executable(seabattle main.cpp
         battle.h
         src/battle.cpp
         flot.h
+        factory.h
+        src/factory.cpp
 )

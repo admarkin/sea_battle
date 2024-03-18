@@ -5,13 +5,13 @@
 #include <vector>
 #include "iship.h"
 
-class Ship_1 : public IShip {
+class ShipOne : public IShip {
 public:
   int count_ = 4;
   int size_ = 1;
   Boat boat;
   std::vector<Boat> v;
-  Ship_1() = default;
+  ShipOne() = default;
   bool Dead() const override {
     return boat.dead;
   }

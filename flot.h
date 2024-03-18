@@ -9,13 +9,14 @@
 #include "ship_2.h"
 #include "ship_1.h"
 
-class Flot {
+class Fleet {
+  class Factory;
 public:
   std::vector<std::shared_ptr<IShip>> ships;
-  std::shared_ptr<Ship_4> ship4;
-  std::shared_ptr<Ship_3> ship3;
-  std::shared_ptr<Ship_2> ship2;
-  std::shared_ptr<Ship_1> ship1;
+  std::shared_ptr<ShipFour> ship4;
+  std::shared_ptr<ShipThree> ship3;
+  std::shared_ptr<ShipTwo> ship2;
+  std::shared_ptr<ShipOne> ship1;
 };
 
 #endif

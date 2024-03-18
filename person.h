@@ -11,7 +11,6 @@ class Person {
 public:
   std::string name;
   std::string password;
-  Flot flot;
   Person() = default;
 };
 

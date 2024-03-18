@@ -6,28 +6,25 @@
 #include "../ship_2.h"
 #include "../ship_3.h"
 
-void Battle::ShipPlacement(Person& person, std::shared_ptr<IShip> ship, int count, int size) {
+void Battle::ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> ship, int count, int size) {
   for (int i = 0; i < count; ++i) {
     std::cout << "Введите координаты для " << size << " палубных кораблей буквы: abc..ij, цифры от 1 до 10" << std::endl;
     std::cout << size << " пары координат по 1 букве и 1 цифре" << std::endl;
     for (int i = 0; i < size; ++i) {
-      std::ios_base::sync_with_stdio(false);
-      std::cin.tie(nullptr);
       char x = 0;
       int y = 0;
       std::cin >> x >> y;
       if (y > 10 || y < 1 || x > 'j' || x < 'a') {
-        std::cout << "Неправильный ввод, ввод" << std::endl;
-        ShipPlacement(person, ship, count, size);
+        std::cout << "Неправильный ввод, попробуйте ещё раз" << std::endl;
+        ShipPlacement(person, fleet, ship, count, size);
       }
-      ship->v.emplace_back(x, y);
     }
     std::cout << "Корабль установлен успешно" << std::endl;
-    person.flot.ships.push_back(ship);
+    fleet.ships.push_back(ship);
   }
 }
 
-void Battle::Registration(Person& person) {
+void Battle::Registration(Person& person, Fleet& fleet) {
   std::cout << "Здравствуйте, это игра Морской бой, пожалуйста, зарегестрируйтесь" << std::endl;
   std::cout << "Введите ваше имя или ник" << std::endl;
   std::cin >> person.name;
@@ -35,13 +32,13 @@ void Battle::Registration(Person& person) {
   std::cin >> person.password;
   std::cout << "Регистрация завершена, приступите к расстановке кораблей" << std::endl;
 
-  ShipPlacement(person, person.flot.ship4, 1, 4);
-  //ShipPlacement(person, ship_3, 2, 3);
-  //ShipPlacement(person, ship_2, 3, 2);
-  //ShipPlacement(person, ship_1, 4, 1);
+  ShipPlacement(person, fleet, fleet.ship4, 1, 4);
+  ShipPlacement(person, fleet, fleet.ship3, 2, 3);
+  ShipPlacement(person, fleet, fleet.ship2, 3, 2);
+  ShipPlacement(person, fleet, fleet.ship1, 4, 1);
 }
 
-void Battle::Game(Person& person, Person& second) {
+void Battle::Game(Person& person, Person& second, Fleet& fleet, Fleet& snd) {
   std::cout << "Ход игрока " << person.name << ". Пожалуйста введите ваш пароль" << std::endl;
   std::string pass;
   std::cin >> pass;
@@ -53,11 +50,16 @@ void Battle::Game(Person& person, Person& second) {
   char x;
   bool shot = false;
   int y;
-  for (int i = 0; i < person.flot.ships.size(); ++i) {
-    shot = person.flot.ships[i]->Search(x, y);
+  std::cin >> x >> y;
+  if (y > 10 || y < 1 || x > 'j' || x < 'a') {
+    std::cout << "Неправильный ввод, ввод" << std::endl;
+    Game(person, second, fleet, snd);
+  }
+  for (int i = 0; i < fleet.ships.size(); ++i) {
+    shot = fleet.ships[i]->Search(x, y);
     if (shot) {
       std::cout << "Попал" << std::endl;
-      if (person.flot.ships[i]->Dead()) {
+      if (fleet.ships[i]->Dead()) {
         std::cout << "Корабль убит" << std::endl;
       }
       break;
@@ -67,15 +69,13 @@ void Battle::Game(Person& person, Person& second) {
     std::cout << "Мимо" << std::endl;
   }
   if (shot) {
-    Game(person, second);
+    Game(person, second, fleet, snd);
   }
-  Game(second, person);
+  Game(second, person, snd, fleet);
 }
 
 void Battle::Start() {
-  Registration(first);
-
-  Registration(second);
-  Game(first, second);
-
+  Registration(first, fst);
+  Registration(second, snd);
+  Game(first, second, snd, fst);
 }

@@ -4,7 +4,7 @@
 #include <vector>
 #include "iship.h"
 
-class Ship_3 : public IShip {
+class ShipThree : public IShip {
 public:
   int count_ = 2;
   int size_ = 3;
@@ -13,7 +13,7 @@ public:
   Boat third;
   std::vector<Boat> v;
 
-  Ship_3() = default;
+  ShipThree() = default;
   bool Dead() const override {
     return first.dead && second.dead && third.dead;
   }
