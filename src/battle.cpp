@@ -1,10 +1,10 @@
 
 #include <iostream>
 #include "../battle.h"
-#include "../ship_4.h"
-#include "../ship_1.h"
-#include "../ship_2.h"
-#include "../ship_3.h"
+#include "../ship_four_cells.h"
+#include "../ship_one_cell.h"
+#include "../ship_two_cells.h"
+#include "../ship_three_cells.h"
 
 void Battle::ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> ship, int count, int size) {
   for (int i = 0; i < count; ++i) {

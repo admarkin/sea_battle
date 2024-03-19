@@ -2,7 +2,7 @@
 #define SEABATTLE_BATTLE_H
 
 #include "person.h"
-#include "ship_4.h"
+#include "ship_four_cells.h"
 #include "factory.h"
 
 class Battle {

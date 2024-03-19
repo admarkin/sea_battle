@@ -1,21 +1,20 @@
 #include <memory>
 #include "../factory.h"
-#include "../ship_1.h"
+#include "../ship_one_cell.h"
 
 
-ShipOne& Factory::GetShipOne() {
-
-}
-
-ShipTwo &Factory::GetShipTwo() {
+ShipOneCell& Factory::GetShipOneCell() {
 
 }
 
-ShipThree &Factory::GetShipThree() {
+ShipTwoCells& Factory::GetShipTwoCells() {
 
 }
 
-ShipFour &Factory::GetShipFour() {
+ShipThreeCells& Factory::GetShipThreeCells() {
+}
+
+ShipFourCells& Factory::GetShipFourCells() {
 
 }
 

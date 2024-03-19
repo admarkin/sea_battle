@@ -1,22 +1,25 @@
-#ifndef SEABATTLE_SHIP_3_H
-#define SEABATTLE_SHIP_3_H
+#ifndef SEABATTLE_SHIP_FOUR_CELLS_H
+#define SEABATTLE_SHIP_FOUR_CELLS_H
 
 #include <vector>
 #include "iship.h"
 
-class ShipThree : public IShip {
+class ShipFourCells : public IShip {
 public:
-  int count_ = 2;
-  int size_ = 3;
-  Boat first;
-  Boat second;
-  Boat third;
-  std::vector<Boat> v;
+  int count_ = 1;
+  int size_ = 4;
+  Cell first;
+  Cell second;
+  Cell third;
+  Cell fourth;
+  std::vector<Cell> v;
 
-  ShipThree() = default;
+public:
+  ShipFourCells() = default;
   bool Dead() const override {
-    return first.dead && second.dead && third.dead;
+    return first.dead && second.dead && third.dead && fourth.dead;
   }
+
   bool Search(char str, int yy) override {
     if (str == first.x && yy == first.y) {
       first.dead = true;
@@ -30,8 +33,13 @@ public:
       third.dead = true;
       return true;
     }
+    if (str == fourth.x && yy == fourth.y) {
+      fourth.dead = true;
+      return true;
+    }
     return false;
   }
 };
+
 
 #endif
