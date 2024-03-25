@@ -16,7 +16,7 @@ class IShip {
 public:
   int count_ = 0;
   int size_ = 0;
-  Cell boat;
+  Cell cell;
   std::vector<Cell> v;
   virtual bool Dead() const = 0;
   virtual bool Search(char, int) = 0;
