@@ -3,18 +3,18 @@
 #include "../ship_one_cell.h"
 
 
-ShipOneCell& Factory::GetShipOneCell() {
-
+std::shared_ptr<ShipOneCell> Factory::GetShipOneCell() {
+  return std::make_shared<ShipOneCell>(ShipOneCell());
 }
 
-ShipTwoCells& Factory::GetShipTwoCells() {
-
+std::shared_ptr<ShipTwoCells> Factory::GetShipTwoCells() {
+  return std::make_shared<ShipTwoCells>(ShipTwoCells());
 }
 
-ShipThreeCells& Factory::GetShipThreeCells() {
+std::shared_ptr<ShipThreeCells> Factory::GetShipThreeCells() {
+  return std::make_shared<ShipThreeCells>(ShipThreeCells());
 }
 
-ShipFourCells& Factory::GetShipFourCells() {
-
+std::shared_ptr<ShipFourCells> Factory::GetShipFourCells() {
+  return std::make_shared<ShipFourCells>(ShipFourCells());
 }
-

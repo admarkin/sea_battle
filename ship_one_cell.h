@@ -13,17 +13,27 @@ public:
   std::vector<Cell> v;
   ShipOneCell() = default;
   bool Dead() const override {
-    return first.dead;
+    int alive = 0;
+    for (auto ship : v) {
+      if (!ship.dead) {
+        ++alive;
+      }
+    }
+    if (alive) {
+      return false;
+    }
+    return true;
   }
   bool Search(char str, int yy) override {
-    if (str == first.x && yy == first.y) {
-      first.dead = true;
-      return true;
+    bool search = false;
+    for (auto &ship: v) {
+      if (ship.x == str && ship.y == yy) {
+        ship.dead = true;
+        search = true;
+      }
     }
-    return false;
+    return search;
   }
 };
 
-
 #endif
-

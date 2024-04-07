@@ -15,22 +15,26 @@ public:
 
   ShipThreeCells() = default;
   bool Dead() const override {
-    return first.dead && second.dead && third.dead;
+    int alive = 0;
+    for (auto ship : v) {
+      if (!ship.dead) {
+        ++alive;
+      }
+    }
+    if (alive) {
+      return false;
+    }
+    return true;
   }
   bool Search(char str, int yy) override {
-    if (str == first.x && yy == first.y) {
-      first.dead = true;
-      return true;
+    bool search = false;
+    for (auto &ship: v) {
+      if (ship.x == str && ship.y == yy) {
+        ship.dead = true;
+        search = true;
+      }
     }
-    if (str == second.x && yy == second.y) {
-      second.dead = true;
-      return true;
-    }
-    if (str == third.x && yy == third.y) {
-      third.dead = true;
-      return true;
-    }
-    return false;
+    return search;
   }
 };
 

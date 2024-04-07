@@ -18,6 +18,7 @@ void Battle::ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> 
         std::cout << "Неправильный ввод, попробуйте ещё раз" << std::endl;
         ShipPlacement(person, fleet, ship, count, size);
       }
+      ship->v.emplace_back(x, y);
     }
     std::cout << "Корабль установлен успешно" << std::endl;
     fleet.ships.push_back(ship);
@@ -31,11 +32,10 @@ void Battle::Registration(Person& person, Fleet& fleet) {
   std::cout << "Придумайте пароль для входа в систему" << std::endl;
   std::cin >> person.password;
   std::cout << "Регистрация завершена, приступите к расстановке кораблей" << std::endl;
-
-  ShipPlacement(person, fleet, fleet.ship4, 1, 4);
-  ShipPlacement(person, fleet, fleet.ship3, 2, 3);
-  ShipPlacement(person, fleet, fleet.ship2, 3, 2);
-  ShipPlacement(person, fleet, fleet.ship1, 4, 1);
+  ShipPlacement(person, fleet, Factory::GetShipFourCells(), 1, 4);
+  //ShipPlacement(person, fleet, fleet.factory.GetShipThreeCells(), 2, 3);
+  //ShipPlacement(person, fleet, fleet.factory.GetShipThreeCells(), 3, 2);
+  ShipPlacement(person, fleet, fleet.factory.GetShipOneCell(), 4, 1);
 }
 
 void Battle::Game(Person& person, Person& second, Fleet& fleet, Fleet& snd) {

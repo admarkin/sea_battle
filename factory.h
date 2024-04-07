@@ -7,10 +7,11 @@
 #include "ship_four_cells.h"
 
 class Factory {
-  ShipOneCell& GetShipOneCell();
-  ShipTwoCells& GetShipTwoCells();
-  ShipThreeCells& GetShipThreeCells();
-  ShipFourCells& GetShipFourCells();
+public:
+  std::shared_ptr<ShipOneCell> GetShipOneCell();
+  std::shared_ptr<ShipTwoCells> GetShipTwoCells();
+  std::shared_ptr<ShipThreeCells> GetShipThreeCells();
+  static std::shared_ptr<ShipFourCells> GetShipFourCells();
 };
 
 #endif
