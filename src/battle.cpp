@@ -7,6 +7,13 @@
 #include "../include/barge.h"
 #include "../include/factory.h"
 
+void CorrectInputChecker(char& x, int& y) {
+  while (y > 10 || y < 1 || x > 'j' || x < 'a') {
+    std::cout << "Неправильный ввод, попробуйте ещё раз" << std::endl;
+    std::cin >> x >> y;
+  }
+}
+
 void Battle::ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> ship, int count, int size) {
   for (int i = 0; i < count; ++i) {
     std::cout << "Введите координаты для " << size << " палубных кораблей буквы: abc..ij, цифры от 1 до 10" << std::endl;
@@ -15,10 +22,7 @@ void Battle::ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> 
       char x = 0;
       int y = 0;
       std::cin >> x >> y;
-      while (y > 10 || y < 1 || x > 'j' || x < 'a') {
-        std::cout << "Неправильный ввод, попробуйте ещё раз" << std::endl;
-        std::cin >> x >> y;
-      }
+      CorrectInputChecker(x, y);
       ship->cells.emplace_back(x, y);
     }
     std::cout << "Корабль установлен успешно" << std::endl;
@@ -34,9 +38,9 @@ void Battle::Registration(Person& person, Fleet& fleet) {
   std::cin >> person.password;
   std::cout << "Регистрация завершена, приступите к расстановке кораблей" << std::endl;
   ShipPlacement(person, fleet, fleet.factory.GetShipFourCells(), 1, 4);
-  //ShipPlacement(person, fleet, fleet.factory.GetShipThreeCells(), 2, 3);
-  //ShipPlacement(person, fleet, fleet.factory.GetShipThreeCells(), 3, 2);
-  //ShipPlacement(person, fleet, fleet.factory.GetShipOneCell(), 4, 1);
+  ShipPlacement(person, fleet, fleet.factory.GetShipThreeCells(), 2, 3);
+  ShipPlacement(person, fleet, fleet.factory.GetShipThreeCells(), 3, 2);
+  ShipPlacement(person, fleet, fleet.factory.GetShipOneCell(), 4, 1);
 }
 
 void Battle::Game(Person& person, Person& second, Fleet& fleet, Fleet& snd) {
@@ -53,10 +57,7 @@ void Battle::Game(Person& person, Person& second, Fleet& fleet, Fleet& snd) {
     bool shot = false;
     int y;
     std::cin >> x >> y;
-    while (y > 10 || y < 1 || x > 'j' || x < 'a') {
-      std::cout << "Неправильный ввод, попробуйте ещё раз" << std::endl;
-      std::cin >> x >> y;
-    }
+    CorrectInputChecker(x, y);
     for (int i = 0; i < fleet.ships.size(); ++i) {
       shot = fleet.ships[i]->Search(x, y);
       if (shot) {
