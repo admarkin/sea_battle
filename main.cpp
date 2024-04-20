@@ -1,5 +1,5 @@
 #include <iostream>
-#include "battle.h"
+#include "include/battle.h"
 
 int main() {
   Battle::getInstance()->Start();

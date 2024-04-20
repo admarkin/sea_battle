@@ -2,7 +2,7 @@
 #define SEABATTLE_BATTLE_H
 
 #include "person.h"
-#include "ship_four_cells.h"
+#include "cruiser.h"
 #include "factory.h"
 
 class Battle {
@@ -18,10 +18,7 @@ private:
 
 public:
   void Start();
-  static Battle* getInstance() {
-    static Battle instance;
-    return &instance;
-  }
+  static Battle* getInstance();
 };
 
 #endif
