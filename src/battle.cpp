@@ -37,10 +37,10 @@ void Battle::Registration(Person& person, Fleet& fleet) {
   std::cout << "Придумайте пароль для входа в систему" << std::endl;
   std::cin >> person.password;
   std::cout << "Регистрация завершена, приступите к расстановке кораблей" << std::endl;
-  ShipPlacement(person, fleet, fleet.factory.GetShipFourCells(), 1, 4);
-  ShipPlacement(person, fleet, fleet.factory.GetShipThreeCells(), 2, 3);
-  ShipPlacement(person, fleet, fleet.factory.GetShipThreeCells(), 3, 2);
-  ShipPlacement(person, fleet, fleet.factory.GetShipOneCell(), 4, 1);
+  ShipPlacement(person, fleet, fleet.factory.GetCruiser(), 1, 4);
+  ShipPlacement(person, fleet, fleet.factory.GetBarge(), 2, 3);
+  ShipPlacement(person, fleet, fleet.factory.GetCatamaran(), 3, 2);
+  ShipPlacement(person, fleet, fleet.factory.GetBoat(), 4, 1);
 }
 
 void Battle::Game(Person& person, Person& second, Fleet& fleet, Fleet& snd) {

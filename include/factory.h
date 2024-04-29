@@ -8,10 +8,10 @@
 
 class Factory {
 public:
-  std::shared_ptr<Boat> GetShipOneCell();
-  std::shared_ptr<Catamaran> GetShipTwoCells();
-  std::shared_ptr<Barge> GetShipThreeCells();
-  std::shared_ptr<Cruiser> GetShipFourCells();
+  std::shared_ptr<Boat> GetBoat();
+  std::shared_ptr<Catamaran> GetCatamaran();
+  std::shared_ptr<Barge> GetBarge();
+  std::shared_ptr<Cruiser> GetCruiser();
 };
 
 #endif
