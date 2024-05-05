@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "../include/battle.h"
 #include "../include/cruiser.h"
