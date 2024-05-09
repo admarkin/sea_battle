@@ -1,8 +1,7 @@
 #include <iostream>
-#include "battle.h"
+#include "include/battle.h"
 
 int main() {
-  Battle battle;
-  battle.Start();
+  Battle::getInstance()->Start();
   return 0;
 }

@@ -2,7 +2,7 @@
 #define SEABATTLE_BATTLE_H
 
 #include "person.h"
-#include "ship_four_cells.h"
+#include "cruiser.h"
 #include "factory.h"
 
 class Battle {
@@ -11,14 +11,14 @@ private:
   Fleet fst;
   Person second;
   Fleet snd;
-  class Factory;
+  Battle() = default;
   void Registration(Person&, Fleet&);
   void ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> ship, int count, int size);
+  void Game(Person&, Person&, Fleet&, Fleet&);
 
 public:
-  explicit Battle() = default;
   void Start();
-  void Game(Person&, Person&, Fleet&, Fleet&);
+  static Battle* getInstance();
 };
 
 #endif

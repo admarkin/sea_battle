@@ -1,20 +1,20 @@
 #include <memory>
-#include "../factory.h"
-#include "../ship_one_cell.h"
+#include "../include/factory.h"
+#include "../include/boat.h"
 
 
-ShipOneCell& Factory::GetShipOneCell() {
-
+std::shared_ptr<Boat> Factory::GetBoat() {
+  return std::make_shared<Boat>(Boat());
 }
 
-ShipTwoCells& Factory::GetShipTwoCells() {
-
+std::shared_ptr<Catamaran> Factory::GetCatamaran() {
+  return std::make_shared<Catamaran>(Catamaran());
 }
 
-ShipThreeCells& Factory::GetShipThreeCells() {
+std::shared_ptr<Barge> Factory::GetBarge() {
+  return std::make_shared<Barge>(Barge());
 }
 
-ShipFourCells& Factory::GetShipFourCells() {
-
+std::shared_ptr<Cruiser> Factory::GetCruiser() {
+  return std::make_shared<Cruiser>(Cruiser());
 }
-
