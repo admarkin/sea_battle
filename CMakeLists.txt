@@ -20,4 +20,6 @@ add_executable(seabattle main.cpp
         src/cruiser.cpp
         src/catamaran.cpp
         src/fleet.cpp
+        include/field.h
+        src/field.cpp
 )
