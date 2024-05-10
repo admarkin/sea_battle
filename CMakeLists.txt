@@ -23,3 +23,6 @@ add_executable(seabattle main.cpp
         include/field.h
         src/field.cpp
 )
+
+add_subdirectory(tests)
+

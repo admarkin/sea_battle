@@ -17,7 +17,7 @@
  - **mkdir build**
  - ***cd build***
  - ***cmake ..***
- - ***make seabattle***
+ - ***make***
  - ***./seabattle***
 
 ### Создан Dockerfile запускающий проект с помощью команд:
@@ -26,9 +26,10 @@
 
 ### Тесты:
 #### для запуска выполните команды:
-- **cd tests**
+
 - **mkdir build**
 - ***cd build***
 - ***cmake ..***
-- ***make sea_test***
+- ***make***
+- **cd tests**
 - ***./sea_test***
