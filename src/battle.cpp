@@ -80,12 +80,12 @@ void Battle::Registration(Person& person, Fleet& fleet) {
   ShipPlacement(person, fleet, fleet.factory.GetCruiser(), 1, 4, field);
   //sleep(1);
   //system("clear");
-  //ShipPlacement(person, fleet, fleet.factory.GetBarge(), 2, 3, field);
+  ShipPlacement(person, fleet, fleet.factory.GetBarge(), 2, 3, field);
   //sleep(1);
-  //ShipPlacement(person, fleet, fleet.factory.GetCatamaran(), 3, 2, field);
+  ShipPlacement(person, fleet, fleet.factory.GetCatamaran(), 3, 2, field);
   //sleep(1);
   //system("clear");
-  //ShipPlacement(person, fleet, fleet.factory.GetBoat(), 4, 1, field);
+  ShipPlacement(person, fleet, fleet.factory.GetBoat(), 4, 1, field);
   //sleep(1);
   system("clear");
 }

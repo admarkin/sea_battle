@@ -23,3 +23,12 @@
 ### Создан Dockerfile запускающий проект с помощью команд:
  - ***sudo docker build -t seabattle .***
  - ***sudo docker run -it seabattle***
+
+### Тесты:
+#### для запуска выполните команды:
+- **cd tests**
+- **mkdir build**
+- ***cd build***
+- ***cmake ..***
+- ***make sea_test***
+- ***./sea_test***
