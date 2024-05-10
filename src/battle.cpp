@@ -1,12 +1,8 @@
 #include <iostream>
 #include <algorithm>
 #include "../include/battle.h"
-#include "../include/cruiser.h"
-#include "../include/boat.h"
-#include "../include/catamaran.h"
-#include "../include/barge.h"
-#include "../include/factory.h"
-#include "../include/field.h"
+#include <cstdlib>
+#include <unistd.h>
 
 void CorrectInputChecker(char& x, int& y, Field& field) {
   while (y > 10 || y < 1 || x > 'j' || x < 'a' || field.FindCoord(x, y)) {
@@ -40,14 +36,14 @@ void Battle::ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> 
   for (int i = 0; i < count; ++i) {
     std::cout << "Введите координаты для " << size << " палубных кораблей буквы: abc..ij, цифры от 1 до 10" << std::endl;
     std::cout << size << " пары координат по 1 букве и 1 цифре" << std::endl;
-    bool first = true;
-    while (first || !CorrectLinePlacement(ship)) {
-      if (!first) {
+    bool start = true;
+    while (start || !CorrectLinePlacement(ship)) {
+      if (!start) {
         std::cout << "Координаты не соответствуют правилам игры, попробуйте ещё раз" << std::endl;
       }
-      first = false;
+      start = false;
       ship->cells.clear();
-      for (int i = 0; i < size; ++i) {
+      for (int j = 0; j < size; ++j) {
         char x = 0;
         int y = 0;
         std::cin >> x >> y;
@@ -82,9 +78,16 @@ void Battle::Registration(Person& person, Fleet& fleet) {
   std::cout << "Регистрация завершена, приступите к расстановке кораблей" << std::endl;
   Field field;
   ShipPlacement(person, fleet, fleet.factory.GetCruiser(), 1, 4, field);
-  ShipPlacement(person, fleet, fleet.factory.GetBarge(), 2, 3, field);
-  ShipPlacement(person, fleet, fleet.factory.GetCatamaran(), 3, 2, field);
-  ShipPlacement(person, fleet, fleet.factory.GetBoat(), 4, 1, field);
+  //sleep(1);
+  //system("clear");
+  //ShipPlacement(person, fleet, fleet.factory.GetBarge(), 2, 3, field);
+  //sleep(1);
+  //ShipPlacement(person, fleet, fleet.factory.GetCatamaran(), 3, 2, field);
+  //sleep(1);
+  //system("clear");
+  //ShipPlacement(person, fleet, fleet.factory.GetBoat(), 4, 1, field);
+  //sleep(1);
+  system("clear");
 }
 
 void CorrectInput(char& x, int& y) {
@@ -95,17 +98,21 @@ void CorrectInput(char& x, int& y) {
 }
 
 void Battle::Game(Person& person, Person& second, Fleet& fleet, Fleet& snd) {
+  bool shot = false;
   while (true) {
-    std::cout << "Ход игрока " << person.name << ". Пожалуйста введите ваш пароль" << std::endl;
-    std::string pass;
-    std::cin >> pass;
-    while (pass != person.password) {
-      std::cout << "Неверный пароль, попробуйте ещё раз" << std::endl;
+    if (!shot) {
+      std::cout << "Ход игрока " << person.name << ". Пожалуйста введите ваш пароль" << std::endl;
+      std::string pass;
       std::cin >> pass;
+      while (pass != person.password) {
+        std::cout << "Неверный пароль, попробуйте ещё раз" << std::endl;
+        std::cin >> pass;
+      }
+    } else {
+      std::cout << "Ход игрока " << person.name << std::endl;
     }
     std::cout << "Введите координаты цели, буквы: abc..ij, цифры от 1 до 10" << std::endl;
     char x;
-    bool shot = false;
     int y;
     std::cin >> x >> y;
     CorrectInput(x, y);
@@ -126,6 +133,8 @@ void Battle::Game(Person& person, Person& second, Fleet& fleet, Fleet& snd) {
     }
     if (!shot) {
       std::cout << "Мимо" << std::endl;
+      sleep(1);
+      system("clear");
     }
     if (shot) {
       continue;
