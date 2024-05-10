@@ -70,6 +70,7 @@ void Battle::ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> 
 }
 
 void Battle::Registration(Person& person, Fleet& fleet) {
+  system("clear");
   std::cout << "Здравствуйте, это игра Морской бой, пожалуйста, зарегестрируйтесь" << std::endl;
   std::cout << "Введите ваше имя или ник" << std::endl;
   std::cin >> person.name;
@@ -78,15 +79,15 @@ void Battle::Registration(Person& person, Fleet& fleet) {
   std::cout << "Регистрация завершена, приступите к расстановке кораблей" << std::endl;
   Field field;
   ShipPlacement(person, fleet, fleet.factory.GetCruiser(), 1, 4, field);
-  //sleep(1);
-  //system("clear");
+  sleep(1);
+  system("clear");
   ShipPlacement(person, fleet, fleet.factory.GetBarge(), 2, 3, field);
-  //sleep(1);
+  sleep(1);
   ShipPlacement(person, fleet, fleet.factory.GetCatamaran(), 3, 2, field);
-  //sleep(1);
-  //system("clear");
+  sleep(1);
+  system("clear");
   ShipPlacement(person, fleet, fleet.factory.GetBoat(), 4, 1, field);
-  //sleep(1);
+  sleep(1);
   system("clear");
 }
 

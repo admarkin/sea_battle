@@ -15,11 +15,5 @@ RUN mkdir -p build
 RUN cd build
 RUN cmake ..
 RUN make seabattle
-#RUN ./seabattle
 
 ENTRYPOINT ["./seabattle"]
-#RUN apt-get -y update
-#RUN apt-get -y install git
-#RUN apt-get -y install cmake
-#RUN apt-get -y install make
-#RUN apt-get -y install g++
