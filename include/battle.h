@@ -4,6 +4,7 @@
 #include "person.h"
 #include "cruiser.h"
 #include "factory.h"
+#include "field.h"
 
 class Battle {
 private:
@@ -13,7 +14,7 @@ private:
   Fleet snd;
   Battle() = default;
   void Registration(Person&, Fleet&);
-  void ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> ship, int count, int size);
+  void ShipPlacement(Person& person, Fleet& fleet, std::shared_ptr<IShip> ship, int count, int size, Field& field);
   void Game(Person&, Person&, Fleet&, Fleet&);
 
 public:

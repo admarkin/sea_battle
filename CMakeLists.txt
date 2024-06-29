@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.22)
 project(seabattle)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -20,4 +20,9 @@ add_executable(seabattle main.cpp
         src/cruiser.cpp
         src/catamaran.cpp
         src/fleet.cpp
+        include/field.h
+        src/field.cpp
 )
+
+add_subdirectory(tests)
+
